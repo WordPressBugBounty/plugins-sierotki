@@ -1,7 +1,7 @@
 === Orphans ===
 Contributors: iworks
 Donate link: https://ko-fi.com/iworks?utm_source=sierotki&utm_medium=readme-donate
-Tags: czech, grammar, orphan, polish typography
+Tags: czech, grammar, orphan, polish, typography
 Requires at least: 5.0
 Tested up to: 6.6
 Stable tag: 3.2.8
