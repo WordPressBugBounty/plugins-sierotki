@@ -3,8 +3,8 @@ Contributors: iworks
 Donate link: https://ko-fi.com/iworks?utm_source=sierotki&utm_medium=readme-donate
 Tags: czech, grammar, orphan, polish, typography
 Requires at least: 5.0
-Tested up to: 6.6
-Stable tag: 3.2.8
+Tested up to: 6.7
+Stable tag: 3.2.9
 Requires PHP: 8.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -152,9 +152,12 @@ add_filter(
 
 == Changelog ==
 
+= 3.2.9 - 2024-11-17 =
+* [Translation loading time has been fixed.](https://github.com/iworks/sierotki/issues/7)
+
 = 3.2.8 - 2024-08-21 =
-* The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to version 2.2.0.
 * The [iWorks Options](https://github.com/iworks/wordpress-options-class) module has been updated to version 2.9.2.
+* The [iWorks Rate](https://github.com/iworks/iworks-rate) module has been updated to version 2.2.0.
 
 = 3.2.7 - 2024-02-21 =
 * Integration with the Bricks builder (part of the Bricks Theme) has been added.
@@ -510,4 +513,5 @@ add_filter(
 = 3.1.0 - 2023-03-06 =
 
 Switching from simple replacement to DOMDocument parsing and string replacement could cause problems for your sites if there are missing required PHP modules.
+
 

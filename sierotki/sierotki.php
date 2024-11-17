@@ -5,13 +5,11 @@ Plugin URI: https://github.com/iworks/sierotki
 Text Domain: sierotki
 Description: Implement Polish grammar rules with orphans.
 Author: Marcin Pietrzak
-Version: 3.2.8
+Version: 3.2.9
 Author URI: http://iworks.pl/
 */
 
 include_once dirname( __FILE__ ) . '/etc/options.php';
-
-load_plugin_textdomain( 'sierotki', false, dirname( __FILE__ ) . '/languages' );
 
 if ( ! defined( 'HDOM_TYPE_ELEMENT' ) ) {
 	require_once dirname( __FILE__ ) . '/vendor/simple_html_dom.php';
