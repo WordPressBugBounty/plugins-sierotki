@@ -279,6 +279,42 @@ function orphans_indicator_options() {
 				'classes'           => array( 'large-text' ),
 				'rows'              => 10,
 			),
+			array(
+				'type'  => 'heading',
+				'label' => __( 'Export/Import', 'sierotki' ),
+				'since' => '3.3.0',
+			),
+			array(
+				'type'  => 'subheading',
+				'label' => __( 'Export', 'sierotki' ),
+				'since' => '3.3.0',
+			),
+			array(
+				'name'              => 'export_extra',
+				'th'                => __( 'Add extra information', 'sierotki' ),
+				'type'              => 'checkbox',
+				'description'       => __( 'Add site configuration data like language, url. Nothing sensitive.', 'sierotki' ),
+				'sanitize_callback' => 'absint',
+				'classes'           => array( 'switch-button' ),
+				'default'           => 1,
+			),
+			array(
+				'name'  => 'export',
+				'value' => __( 'Export JSON', 'sierotki' ),
+				'type'  => 'button',
+				'since' => '3.3.0',
+			),
+			array(
+				'type'  => 'subheading',
+				'label' => __( 'Import', 'sierotki' ),
+				'since' => '3.3.0',
+			),
+			array(
+				'name'     => 'import',
+				'type'     => 'serialize',
+				'callback' => 'iworks_orphans_options_import',
+				'since'    => '3.3.0',
+			),
 		),
 		'metaboxes'       => array(
 			'assistance' => array(
@@ -423,4 +459,17 @@ function iworks_orphans_options_need_assistance( $iworks_orphans ) {
 	<li><a href="<?php _ex( 'https://wordpress.org/support/plugin/sierotki/', 'link to support forum on WordPress.org', 'sierotki' ); ?>"><?php _e( 'WordPress Help Forum', 'sierotki' ); ?></a></li>
 </ul>
 	<?php
+}
+
+function iworks_orphans_options_import() {
+	$content = '';
+	$content = wp_kses_post( get_option( 'iworks_orphans_options_import_messages' ) );
+	delete_option( 'iworks_orphans_options_import_messages' );
+	$content .= '<input type="file" name="iworks_orphan_import_file" accept="application/json" />';
+	$content .= sprintf(
+		'<button class="button" data-nonce="%s" name="iworks_orphan_import_button" disabled="disabled">%s</button>',
+		wp_create_nonce( 'iworks_orphan_import' ),
+		esc_html__( 'Import JSON', 'sierotki' )
+	);
+	return $content;
 }

@@ -17,6 +17,13 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
  */
 
+defined( 'ABSPATH' ) || exit; // Exit if accessed directly
+
+/**
+ * Main Orphans Class.
+ *
+ * @since 1.0.0
+ */
 class iworks_orphan {
 
 	private $options;
@@ -48,7 +55,7 @@ class iworks_orphan {
 	 *
 	 * @since 3.0.0
 	 */
-	private $version = '3.2.9';
+	private $version = '3.3.0';
 
 	/**
 	 * tags to avoid replacement
@@ -95,10 +102,6 @@ class iworks_orphan {
 		$file       = dirname( dirname( dirname( __FILE__ ) ) ) . '/sierotki.php';
 		$this->root = dirname( $file );
 		/**
-		 * options
-		 */
-		$this->options = get_orphan_options();
-		/**
 		 * plugin ID
 		 */
 		$this->plugin_file = plugin_basename( $file );
@@ -106,9 +109,12 @@ class iworks_orphan {
 		 * actions
 		 */
 		add_action( 'init', array( $this, 'init' ) );
-		add_action( 'init', array( $this, 'action_load_plugin_textdomain' ) );
+		add_action( 'init', array( $this, 'action_load_plugin_textdomain' ), 0 );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'load-appearance_page_iworks_orphan_index', array( $this, 'clear_terms_cache' ) );
+		add_action( 'load-appearance_page_iworks_orphan_index', array( $this, 'load_classes' ) );
+		add_action( 'plugins_loaded', array( $this, 'send_json' ) );
+		add_action( 'plugins_loaded', array( $this, 'import_json' ) );
 		/**
 		 * clear cache terms after site langage was changed
 		 *
@@ -123,14 +129,6 @@ class iworks_orphan {
 		 * iWorks Rate Class
 		 */
 		add_filter( 'iworks_rate_notice_logo_style', array( $this, 'filter_plugin_logo' ), 10, 2 );
-		/**
-		 * Replace in Translations functions.
-		 *
-		 * Since 3.1.0
-		 */
-		if ( $this->options->get_option( 'gettext' ) ) {
-			add_filter( 'gettext', array( $this, 'filter_gettext' ), 10, 3 );
-		}
 		/**
 		 * get terms filter
 		 *
@@ -483,6 +481,18 @@ class iworks_orphan {
 	 * Initialize, but not for admin
 	 */
 	public function init() {
+		/**
+		 * options
+		 */
+		$this->options = get_orphan_options();
+		/**
+		 * Replace in Translations functions.
+		 *
+		 * Since 3.1.0
+		 */
+		if ( $this->options->get_option( 'gettext' ) ) {
+			add_filter( 'gettext', array( $this, 'filter_gettext' ), 10, 3 );
+		}
 		/**
 		 * Turn off all replacements for admin area - we do not need it!
 		 */
@@ -1054,6 +1064,7 @@ class iworks_orphan {
 	 * @since 3.2.9
 	 */
 	public function action_load_plugin_textdomain() {
+		return;
 		load_plugin_textdomain(
 			'sierotki',
 			false,
@@ -1061,5 +1072,46 @@ class iworks_orphan {
 		);
 	}
 
+	/**
+	 * Send JSON File
+	 *
+	 * @since 3.3.0
+	 */
+	public function send_json() {
+		$nonce_value = filter_input( INPUT_POST, 'nonce' );
+		if ( empty( $nonce_value ) ) {
+			return;
+		}
+		if ( ! wp_verify_nonce( $nonce_value, 'iworks_orphan_export' ) ) {
+			return;
+		}
+		$this->load_classes();
+		$this->loaded_integrations['export']->send_json();
+		wp_send_json_error();
+	}
+
+	/**
+	 * Upload JSON File
+	 *
+	 * @since 3.3.0
+	 */
+	public function import_json() {
+		$nonce_value = filter_input( INPUT_POST, 'nonce' );
+		if ( empty( $nonce_value ) ) {
+			return;
+		}
+		if ( ! wp_verify_nonce( $nonce_value, 'iworks_orphan_import' ) ) {
+			return;
+		}
+		$this->load_classes();
+		$this->loaded_integrations['import']->import_json();
+	}
+
+	public function load_classes() {
+		include_once __DIR__ . '/orphans/class-iworks-orphans-export.php';
+		$this->loaded_integrations['export'] = new iWorks_Orphans_Export;
+		include_once __DIR__ . '/orphans/class-iworks-orphans-import.php';
+		$this->loaded_integrations['import'] = new iWorks_Orphans_Import;
+	}
 }
 
