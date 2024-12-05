@@ -69,7 +69,7 @@ jQuery(document).ready(function($) {
 				'date'   => date( 'c' ),
 				'plugin' => array(
 					'name'    => 'Orphans',
-					'version' => '3.3.0',
+					'version' => '3.3.1',
 				),
 				'url'    => array(
 					'GitHub'    => 'https://github.com/iworks/sierotki',
