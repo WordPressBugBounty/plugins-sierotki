@@ -4,7 +4,7 @@ Donate link: https://ko-fi.com/iworks?utm_source=sierotki&utm_medium=readme-dona
 Tags: czech, grammar, orphan, polish, typography
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 3.3.1
+Stable tag: 3.3.2
 Requires PHP: 8.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -151,6 +151,9 @@ add_filter(
 1. Miscellaneous options.
 
 == Changelog ==
+
+= 3.3.2 - 2025-01-03 =
+* Check for `iworks_options` object has been added. [#12](https://github.com/iworks/sierotki/issues/12). Props for [maciejsb](https://wordpress.org/support/users/maciejsb/).
 
 = 3.3.1 - 2024-12-05 =
 * [Translation loading time has been fixed.](https://github.com/iworks/sierotki/issues/7)

@@ -5,7 +5,7 @@ Plugin URI: https://github.com/iworks/sierotki
 Text Domain: sierotki
 Description: Implement Polish grammar rules with orphans.
 Author: Marcin Pietrzak
-Version: 3.3.1
+Version: 3.3.2
 Author URI: http://iworks.pl/
 */
 

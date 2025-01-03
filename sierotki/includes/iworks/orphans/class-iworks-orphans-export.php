@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2024-2024 Marcin Pietrzak (marcin@iworks.pl)
+Copyright 2024-2025 Marcin Pietrzak (marcin@iworks.pl)
 
 this program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
@@ -69,7 +69,7 @@ jQuery(document).ready(function($) {
 				'date'   => date( 'c' ),
 				'plugin' => array(
 					'name'    => 'Orphans',
-					'version' => '3.3.1',
+					'version' => '3.3.2',
 				),
 				'url'    => array(
 					'GitHub'    => 'https://github.com/iworks/sierotki',

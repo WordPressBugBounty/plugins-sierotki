@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2011-2024 Marcin Pietrzak (marcin@iworks.pl)
+Copyright 2011-2025 Marcin Pietrzak (marcin@iworks.pl)
 
 this program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
@@ -55,7 +55,7 @@ class iworks_orphan {
 	 *
 	 * @since 3.0.0
 	 */
-	private $version = '3.3.1';
+	private $version = '3.3.2';
 
 	/**
 	 * tags to avoid replacement
@@ -474,6 +474,7 @@ class iworks_orphan {
 	 * Inicialize admin area
 	 */
 	public function admin_init() {
+		$this->check_option_object();
 		$this->options->options_init();
 		add_filter( 'plugin_action_links_' . $this->plugin_file, array( $this, 'add_settings_link' ) );
 	}
@@ -485,7 +486,7 @@ class iworks_orphan {
 		/**
 		 * options
 		 */
-		$this->options = get_orphan_options();
+		$this->check_option_object();
 		/**
 		 * Replace in Translations functions.
 		 *
@@ -672,6 +673,7 @@ class iworks_orphan {
 	 * @param array  $actions     An array of plugin action links.
 	 */
 	public function add_settings_link( $actions ) {
+		$this->check_option_object();
 		$page      = $this->options->get_pagehook();
 		$url       = add_query_arg( 'page', $page, admin_url( 'themes.php' ) );
 		$actions[] = sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html__( 'Settings', 'sierotki' ) );
@@ -699,6 +701,7 @@ class iworks_orphan {
 			return $check;
 		}
 		if ( null === $this->meta_keys ) {
+			$this->check_option_object();
 			$value = $this->options->get_option( 'post_meta' );
 			if ( empty( $value ) || ! is_string( $value ) ) {
 				return $check;
@@ -761,6 +764,12 @@ class iworks_orphan {
 			return $terms;
 		}
 		$this->orphans_where_loaded = true;
+		/**
+		 * check option object
+		 *
+		 * @since 3.3.2
+		 */
+		$this->check_option_object();
 		/**
 		 * set file name
 		 *
@@ -1129,6 +1138,18 @@ class iworks_orphan {
 			__( 'Orphans', 'sierotki' ),
 			'sierotki'
 		);
+	}
+
+	/**
+	 * check option object
+	 *
+	 * @since 3.3.2
+	 */
+	private function check_option_object() {
+		if ( is_a( $this->options, 'iworks_options' ) ) {
+			return;
+		}
+		$this->options = get_orphan_options();
 	}
 }
 
