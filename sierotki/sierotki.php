@@ -1,12 +1,30 @@
 <?php
 /*
 Plugin Name: Orphans
-Plugin URI: https://github.com/iworks/sierotki
 Text Domain: sierotki
-Description: Implement Polish grammar rules with orphans.
+Plugin URI: https://github.com/iworks/sierotki
+Description: Supports the grammar rule for orphan words at the end of a line.
+Version: 3.3.3
 Author: Marcin Pietrzak
-Version: 3.3.2
 Author URI: http://iworks.pl/
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+
+Copyright 2025-2025 Marcin Pietrzak (marcin@iworks.pl)
+
+this program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2, as
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
 */
 
 include_once dirname( __FILE__ ) . '/etc/options.php';
