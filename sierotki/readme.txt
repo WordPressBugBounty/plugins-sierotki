@@ -4,7 +4,7 @@ Donate link: https://ko-fi.com/iworks?utm_source=sierotki&utm_medium=readme-dona
 Tags: czech, grammar, orphan, polish, typography
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 3.3.3
+Stable tag: 3.3.4
 Requires PHP: 8.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -24,7 +24,6 @@ To avoid line breaks in the incorrect position, the plugin fixes orphans' positi
 = GitHub =
 
 The Orphans plugin is available also on [GitHub - Orphans](https://github.com/iworks/sierotki).
-
 
 == Installation ==
 
@@ -151,6 +150,9 @@ add_filter(
 1. Miscellaneous options.
 
 == Changelog ==
+
+= 3.3.4 - 2025-03-24 =
+* The problem with saving options has been fixed. [#14](https://github.com/iworks/sierotki/issues/14). Props for [e-poka](https://e-poka.com/).
 
 = 3.3.3 - 2025-03-11 =
 * Added translation support to [GitHub releases](https://github.com/iworks/sierotki/releases).
