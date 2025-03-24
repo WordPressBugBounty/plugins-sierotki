@@ -55,7 +55,7 @@ class iworks_orphan {
 	 *
 	 * @since 3.0.0
 	 */
-	private $version = '3.3.4';
+	private $version = '3.3.5';
 
 	/**
 	 * tags to avoid replacement
