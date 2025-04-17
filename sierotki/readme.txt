@@ -3,8 +3,8 @@ Contributors: iworks
 Donate link: https://ko-fi.com/iworks?utm_source=sierotki&utm_medium=readme-donate
 Tags: czech, grammar, orphan, polish, typography
 Requires at least: 6.0
-Tested up to: 6.7
-Stable tag: 3.3.5
+Tested up to: 6.8
+Stable tag: 3.3.6
 Requires PHP: 8.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -150,6 +150,11 @@ add_filter(
 1. Miscellaneous options.
 
 == Changelog ==
+
+= 3.3.6 - 2025-04-16 =
+* Enhanced integration with the Bricks Builder (Bricks Theme). [#16](https://github.com/iworks/sierotki/issues/16). Props for [Cactoo](https://profiles.wordpress.org/cactoo/).
+* Removed replacements for translation functions within the admin interface.
+* Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.0.
 
 = 3.3.5 - 2025-03-24 =
 * The issue with the saving multiple option value has been resolved.

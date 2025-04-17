@@ -55,7 +55,7 @@ class iworks_orphan {
 	 *
 	 * @since 3.0.0
 	 */
-	private $version = '3.3.5';
+	private $version = '3.3.6';
 
 	/**
 	 * tags to avoid replacement
@@ -940,6 +940,14 @@ class iworks_orphan {
 	 * Since 3.1.0
 	 */
 	public function filter_gettext( $translation, $text, $domain ) {
+		/**
+		 * do not replace in admin
+		 *
+		 * @since 3.3.5
+		 */
+		if ( is_admin() ) {
+			return $translation;
+		}
 		/**
 		 * Replace in gettext?
 		 *

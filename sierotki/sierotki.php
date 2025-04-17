@@ -4,7 +4,7 @@ Plugin Name: Orphans
 Text Domain: sierotki
 Plugin URI: https://github.com/iworks/sierotki
 Description: Supports the grammar rule for orphan words at the end of a line.
-Version: 3.3.5
+Version: 3.3.6
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/
 License: GPLv3 or later
