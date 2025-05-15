@@ -4,7 +4,7 @@ Donate link: https://ko-fi.com/iworks?utm_source=sierotki&utm_medium=readme-dona
 Tags: czech, grammar, orphan, polish, typography
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 3.3.6
+Stable tag: 3.3.7
 Requires PHP: 8.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -150,6 +150,15 @@ add_filter(
 1. Miscellaneous options.
 
 == Changelog ==
+
+= 3.3.7 - 2025-05-15 =
+* Enhanced PHPDoc documentation across the codebase for better maintainability.
+* Improved code organization and added proper escaping for output security.
+* Added constants for plugin paths and URLs to improve code reliability.
+* Fixed URL escaping in admin interface for better security.
+* Updated documentation with more detailed function descriptions and parameter information.
+* Improved code comments and inline documentation for better developer experience.
+* Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.1.
 
 = 3.3.6 - 2025-04-16 =
 * Enhanced integration with the Bricks Builder (Bricks Theme). [#16](https://github.com/iworks/sierotki/issues/16). Props for [Cactoo](https://profiles.wordpress.org/cactoo/).
