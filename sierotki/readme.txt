@@ -4,7 +4,7 @@ Donate link: https://ko-fi.com/iworks?utm_source=sierotki&utm_medium=readme-dona
 Tags: czech, grammar, orphan, polish, typography
 Requires at least: 6.0
 Tested up to: 6.8
-Stable tag: 3.3.8
+Stable tag: 3.3.9
 Requires PHP: 8.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -13,10 +13,10 @@ Supports the grammar rule for orphan words at the end of a line.
 
 == Description ==
 
-The **Orphans** plugin automatically improves the typography of your WordPress site by preventing single-letter or very short words—known as *orphans*—from appearing alone at the end or beginning of a line. By replacing the space after these words with a non-breaking space, the plugin ensures cleaner, more professional-looking text layouts, especially for languages like Polish where such typographic rules are important.
+The **Orphans** plugin automatically improves the typography of your WordPress site by preventing single-letter or very short words—known as *orphans*—from appearing alone at the beginning of a line. By replacing the space after these words with a non-breaking space, the plugin ensures cleaner, more professional-looking text layouts, especially for languages like Polish where such typographic rules are important.
 
 = What are Orphans? =
-An *orphan* in typography is a short word (often a single character) left isolated at the end or start of a line, separated from the rest of the sentence. This is considered a composition error and can negatively affect readability and the visual appeal of your content.
+An *orphan* in typography is a short word (often a single character) left isolated at the beginning of a line, separated from the rest of the sentence. This is considered a composition error and can negatively affect readability and the visual appeal of your content.
 
 = Key Features =
 - **Automatic Orphan Fixing:** Scans your content and replaces spaces after short words (orphans) with non-breaking spaces, preventing them from being separated by line breaks.
@@ -33,7 +33,7 @@ Once activated, Orphans automatically processes your posts, pages, and other con
 - Sites in languages (like Polish or Czech) where orphan control is a common publishing requirement.
 - Anyone wanting to enhance the professional appearance and readability of their WordPress content.
 
-= Open Source \& Developer Friendly =
+= Open Source & Developer Friendly =
 Orphans is open source, actively maintained, and available on [GitHub](https://github.com/iworks/sierotki) for those interested in contributing or extending its features.
 
 = Asset image =
@@ -165,6 +165,11 @@ add_filter(
 1. Miscellaneous options.
 
 == Changelog ==
+
+= 3.3.9 - 2025-08-23 =
+* Integration with the [Secure Custom Fields plugin](https://wordpress.org/plugins/secure-custom-fields/) has been added.
+* Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.7.
+* Updated the [iWorks Rate](https://github.com/iworks/iworks-rate) module to version 2.3.1.
 
 = 3.3.8 - 2025-05-22 =
 * Replaced `logo.png` by `logo.svg`.
