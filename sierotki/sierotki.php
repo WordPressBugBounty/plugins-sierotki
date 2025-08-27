@@ -3,7 +3,7 @@
  * Plugin Name:       Orphans
  * Plugin URI:        https://github.com/iworks/sierotki
  * Description:       Supports the grammar rule for orphan words at the end of a line.
- * Version:           3.3.9
+ * Version:           3.4.0
  * Author:            Marcin Pietrzak
  * Author URI:        http://iworks.pl/
  * License:           GPL-3.0+
@@ -39,7 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants
-define( 'IWORKS_ORPHANS_VERSION', '3.3.9' );
+define( 'IWORKS_ORPHANS_VERSION', '3.4.0' );
 define( 'IWORKS_ORPHANS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'IWORKS_ORPHANS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
