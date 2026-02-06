@@ -1,9 +1,9 @@
 <?php
 /*
 Class Name: iWorks Options
-Class URI: http://iworks.pl/
+Class URI: https://github.com/iworks/wordpress-options-class
 Description: Option class to manage options.
-Version: 3.0.7
+Version: 3.0.8
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/
 License: GPLv3 or later
@@ -23,7 +23,6 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-
  */
 
 defined( 'ABSPATH' ) || exit; // Exit if accessed directly
@@ -74,7 +73,7 @@ class iworks_options {
 		 * basic setup
 		 */
 		$this->notices              = array();
-		$this->version              = '3.0.7';
+		$this->version              = '3.0.8';
 		$this->option_group         = 'index';
 		$this->option_function_name = null;
 		$this->option_prefix        = null;
