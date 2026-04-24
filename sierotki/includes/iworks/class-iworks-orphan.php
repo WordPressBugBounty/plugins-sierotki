@@ -1,6 +1,6 @@
 <?php
 /*
-Copyright 2011-2025 Marcin Pietrzak (marcin@iworks.pl)
+Copyright 2011-2026 Marcin Pietrzak (marcin@iworks.pl)
 
 this program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as
@@ -55,7 +55,7 @@ class iworks_orphan {
 	 *
 	 * @since 3.0.0
 	 */
-	private $version = '3.4.1';
+	private $version = '3.4.2';
 
 	/**
 	 * tags to avoid replacement

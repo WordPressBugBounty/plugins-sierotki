@@ -3,7 +3,7 @@
  * Plugin Name:       Orphans
  * Plugin URI:        https://github.com/iworks/sierotki
  * Description:       Supports the grammar rule for orphan words at the end of a line.
- * Version:           3.4.1
+ * Version:           3.4.2
  * Author:            Marcin Pietrzak
  * Author URI:        http://iworks.pl/
  * License:           GPL-3.0+
@@ -14,7 +14,7 @@
  * @package WordPress
  * @subpackage Sierotki
  * @author     Marcin Pietrzak <marcin@iworks.pl>
- * @copyright  2011-2025 Marcin Pietrzak
+ * @copyright  2011-2026 Marcin Pietrzak
  * @license    https://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0 or later
  */
 
@@ -33,13 +33,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-// Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+defined( 'ABSPATH' ) || exit;
 
 // Define plugin constants
-define( 'IWORKS_ORPHANS_VERSION', '3.4.1' );
+define( 'IWORKS_ORPHANS_VERSION', '3.4.2' );
 define( 'IWORKS_ORPHANS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'IWORKS_ORPHANS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
@@ -52,19 +49,19 @@ if ( ! defined( 'HDOM_TYPE_ELEMENT' ) ) {
 }
 
 // Set includes directory path
-$includes = IWORKS_ORPHANS_PLUGIN_DIR . 'includes';
+$orphans_includes = IWORKS_ORPHANS_PLUGIN_DIR . 'includes';
 
 // Load main plugin class
-require_once $includes . '/iworks/class-iworks-orphan.php';
+require_once $orphans_includes . '/iworks/class-iworks-orphan.php';
 
 // Include iWorks Rate class if not already loaded
 if ( ! class_exists( 'iworks_rate' ) ) {
-	include_once $includes . '/iworks/rate/rate.php';
+	include_once $orphans_includes . '/iworks/rate/rate.php';
 }
 
 // Include iWorks Options class if not already loaded (since 2.6.8)
 if ( ! class_exists( 'iworks_options' ) ) {
-	include_once $includes . '/iworks/options/options.php';
+	include_once $orphans_includes . '/iworks/options/options.php';
 }
 
 // Initialize the plugin

@@ -7,7 +7,7 @@
  * @author     Marcin Pietrzak <marcin@iworks.pl>
  * @license    GPL-2.0+ <https://www.gnu.org/licenses/gpl-2.0.txt>
  * @link       https://wordpress.org/plugins/sierotki/
- * @copyright  2024-2025 Marcin Pietrzak
+ * @copyright  2024-2026 Marcin Pietrzak
  */
 
 /*
@@ -103,7 +103,7 @@ jQuery(document).ready(function($) {
 				'date'   => gmdate( 'c' ),
 				'plugin' => array(
 					'name'    => 'Orphans',
-					'version' => '3.4.1',
+					'version' => '3.4.2',
 				),
 				'url'    => array(
 					'GitHub'    => 'https://github.com/iworks/sierotki',

@@ -3,8 +3,8 @@ Contributors: iworks
 Donate link: https://ko-fi.com/iworks?utm_source=sierotki&utm_medium=readme-donate
 Tags: czech, grammar, orphan, polish, typography
 Requires at least: 6.0
-Tested up to: 6.8
-Stable tag: 3.4.1
+Tested up to: 7.0
+Stable tag: 3.4.2
 Requires PHP: 8.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -165,6 +165,10 @@ add_filter(
 1. Miscellaneous options.
 
 == Changelog ==
+
+= 3.4.2 - 2026-04-24 =
+* Updated & enhaced build process.
+* Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.1.0.
 
 = 3.4.1 - 2025-10-14 =
 * Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.0.8.
