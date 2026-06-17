@@ -372,10 +372,6 @@ class iworks_options {
 			$option_group = $this->option_group;
 		}
 		$options = array();
-		if ( array_key_exists( $option_group, $options ) && ! empty( $options[ $option_group ] ) ) {
-			$options = apply_filters( $this->option_function_name, $this->options );
-			return $options[ $option_group ];
-		}
 		if ( is_callable( $this->option_function_name ) ) {
 			$options = apply_filters( $this->option_function_name, call_user_func( $this->option_function_name ) );
 		}
@@ -1650,7 +1646,7 @@ class iworks_options {
 			'show_option_none' => esc_attr( $show_option_none ),
 			'post_type'        => esc_attr( $post_type ),
 		);
-		return wp_dropdown_pages( $args );
+		return wp_dropdown_pages( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 
 	/**
@@ -2389,7 +2385,7 @@ class iworks_options {
 				'deps'               => array( 'jquery', 'switch_button', 'jquery-ui-tabs' ),
 				'wp_localize_script' => array(
 					'buttons' => array(
-						'select_media' => __( 'Select Image', 'sierotki' ),
+						'select_media' => esc_html__( 'Select Image', 'sierotki' ),
 					),
 				),
 			),

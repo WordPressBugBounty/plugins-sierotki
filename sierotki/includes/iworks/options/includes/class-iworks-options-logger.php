@@ -96,7 +96,7 @@ class iworks_options_logger {
             return;
         }
         $this->simple_history_logger_helper(
-            __( 'Option "{option_name}" has been updated. From "{old_value}" to "{new_value}".', 'sierotki' ),
+            esc_html__( 'Option "{option_name}" has been updated. From "{old_value}" to "{new_value}".', 'sierotki' ),
             array(
                 'option_name' => $option_name,
                 'old_value'   => $old_value,
@@ -185,7 +185,7 @@ class iworks_options_logger {
                         $data,
                         array(
                             'plugin_name' => 'sierotki',
-                            'plugin_version' => '3.4.2',
+                            'plugin_version' => '3.4.3',
                             'plugin_url' => 'PLUGIN_URL',
                             'plugin_author' => sprintf( '<a href="%s">%s</a>', esc_url( 'AUTHOR_URL' ), esc_html( '' ) ),
                         )
