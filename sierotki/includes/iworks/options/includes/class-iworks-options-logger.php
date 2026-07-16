@@ -185,7 +185,7 @@ class iworks_options_logger {
                         $data,
                         array(
                             'plugin_name' => 'sierotki',
-                            'plugin_version' => '3.4.3',
+                            'plugin_version' => '3.4.4',
                             'plugin_url' => 'PLUGIN_URL',
                             'plugin_author' => sprintf( '<a href="%s">%s</a>', esc_url( 'AUTHOR_URL' ), esc_html( '' ) ),
                         )
