@@ -4,7 +4,7 @@ Donate link: https://ko-fi.com/iworks?utm_source=sierotki&utm_medium=readme-dona
 Tags: czech, grammar, orphan, polish, typography
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 3.4.4
+Stable tag: 3.4.5
 Requires PHP: 8.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -80,82 +80,13 @@ There are 3 ways to install this plugin:
 
 Plugin works when viewing the content and does not modify your content.
 
+= How to use this plugin on the custom field? =
+
+Apply the `orphan_replace` filter to the field value — see the developer documentation ([README.md](https://github.com/iworks/sierotki#using-the-plugin-in-code)) for examples.
+
 = I have a problem with the plugin, or I want to suggest a feature. Where can I do this? =
 
 You can do it on [Support Threads](https://wordpress.org/support/plugin/sierotki/#new-topic-0), but please add your ticket to [Github Issues](https://github.com/iworks/sierotki/issues).
-
-= How to use this plugin on the custom field? =
-
-Use `orphan_replace` filter. Example code:
-
-`
-$value = apply_filters(
-    'orphan_replace',
-    get_post_meta($post_id, 'meta_key', true )
-);
-`
-
-= How to use this plugin on any string? =
-
-Use `orphan_replace` filter. Example code:
-
-`
-$value = apply_filters( 'orphan_replace', 'any string' );
-`
-
-= How to change plugin capability? =
-
-By default to using this plugin you must have `manage_options` capability, which usually means site administrator. If you want to allow manage Orphans by "Editors" then you need to use other capabilities, e.g.  `unfiltered_html`. You can use `iworks_orphans_capability` filter:
-
-`
-add_filter('iworks_orphans_capability', 'my_orphans_capability');
-function my_orphans_capability($capability) {
-    return 'unfiltered_html';
-}
-`
-
-= How to turn of replacement in my piece of code? =
-
-At the beginning of your block just add:
-`
-add_filter( 'orphan_skip_replacement', '__return_true' );
-`
-and at the end, to again turn on replacements:
-`
-remove_filter( 'orphan_skip_replacement', '__return_true' );
-`
-
-= How can I change default orphans? =
-
-Please use `iworks_orphan_terms` filter. It is array of default orphans. You can remove, add or even replace whole array. For example, to remove words "oraz", "na" and ""nie", use code bellow:
-
-`
-add_filter( 'iworks_orphan_terms', 'remove_iworks_orphan_terms' );
-function remove_iworks_orphan_terms( $terms ) {
-    $default_orphans_to_remove = array( 'oraz', 'na', 'nie', );
-    foreach( $default_orphans_to_remove as $value ) {
-        if ( $key = array_search( $value, $terms ) ) {
-            unset( $terms[ $key ] );
-        }
-    }
-    return $terms;
-}
-`
-
-= How can I change the default orphan file? =
-
-The default file with definitions is located in the `etc/` directory.
-
-You can change it using the filter `iworks_orphan_own_terms_file`:
-
-`
-add_filter(
-    'iworks_orphan_own_terms_file',
-    function( $file ) {
-        return '<own path to file';
-    }
-);
-'
 
 == Screenshots ==
 
@@ -165,6 +96,24 @@ add_filter(
 1. Miscellaneous options.
 
 == Changelog ==
+
+= 3.4.5 - 2026-11-03 =
+* Build system converted from Grunt to the Bun bundler (`bun run build`).
+* Developer documentation moved from `readme.txt` to `README.md` - the WordPress.org readme is now end-user focused only.
+* New `bun run update-libs` task to update the vendored iWorks libraries.
+* Translation files regenerated with wp-cli (`i18n make-pot` / `update-po`).
+* Security hardening: capability check (new `iworks/orphans/capability` filter, default `manage_options`) is now enforced for configuration import and export.
+* Security hardening: imported option names are whitelisted to plugin options only - arbitrary options can no longer be overwritten.
+* Security hardening: uploaded import file is fully validated before parsing.
+* Security hardening: orphan terms are escaped with `preg_quote()` before building replacement patterns.
+* Export file name is now properly quoted in the `Content-Disposition` header.
+* Import/export admin scripts are loaded only on the Orphans settings screen.
+* The `iworks_orphans_capability` filter, previously documented, is now actually applied - renamed to `iworks/orphans/capability` with the old name kept as a deprecated fallback.
+* All `iworks_orphan_*` (and `orphans_*`) filters renamed to the namespaced `iworks/orphans/...` schema - legacy names still work as deprecated (3.6.0) fallbacks.
+* Fixed release packaging: `.git*`, `.gitmodules`, `.github/` and `.editorconfig` files are no longer included in the ZIPs.
+* Fixed build: the `https://github.com/iworks/sierotki` placeholder replacement no longer corrupts the `IWORKS_ORPHANS_PLUGIN_URL` constant (a fatal error on activation).
+* Empty banner-only `sierotki-admin`/`sierotki-frontend` JS and CSS bundles are no longer shipped.
+* Plugin root, plugin basename and assets URL are now derived from the plugin constants instead of relative directory guessing.
 
 = 3.4.4 - 2026-07-16 =
 * Updated the [iWorks Options](https://github.com/iworks/wordpress-options-class) module to version 3.1.1.

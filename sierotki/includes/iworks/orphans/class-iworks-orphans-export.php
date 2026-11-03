@@ -59,14 +59,19 @@ class iWorks_Orphans_Export {
 	 * Enqueues necessary admin scripts for the export functionality.
 	 *
 	 * Adds a jQuery script that handles the export form submission dynamically.
-	 * The script is printed in the admin footer with the lowest priority.
+	 * The script is printed only on the plugin settings screen.
 	 *
 	 * @since 3.3.0
+	 * @since 3.4.5 - restricted to the plugin settings screen.
 	 * @action admin_print_scripts
 	 *
 	 * @return void
 	 */
 	public function action_admin_print_scripts() {
+		$screen = get_current_screen();
+		if ( ! $screen || 'appearance_page_iworks_orphan_index' !== $screen->id ) {
+			return;
+		}
 		echo PHP_EOL;
 		?><script id="<?php echo esc_attr( __CLASS__ ); ?>">
 jQuery(document).ready(function($) {
@@ -103,7 +108,7 @@ jQuery(document).ready(function($) {
 				'date'   => gmdate( 'c' ),
 				'plugin' => array(
 					'name'    => 'Orphans',
-					'version' => '3.4.4',
+					'version' => '3.4.5',
 				),
 				'url'    => array(
 					'GitHub'    => 'https://github.com/iworks/sierotki',
@@ -128,13 +133,37 @@ jQuery(document).ready(function($) {
 		 */
 		header( 'Content-Description: File Transfer' );
 		header( 'Content-Type: application/json' );
-		header( 'Content-Disposition: attachment; filename=' . $filename );
+		header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
 		header( 'Content-Transfer-Encoding: binary' );
 		header( 'Expires: 0' );
 		header( 'Cache-Control: must-revalidate, post-check=0, pre-check=0' );
 		header( 'Pragma: public' );
 		echo json_encode( $data, JSON_PRETTY_PRINT );
 		exit;
+	}
+
+	/**
+	 * Apply a filter with its new namespaced name and a deprecated fallback.
+	 *
+	 * @since 3.4.5
+	 *
+	 * @param string $old   Legacy filter name (deprecated since 3.6.0).
+	 * @param string $new   New filter name (iworks/orphans/... schema).
+	 * @param mixed  $value Filtered value.
+	 * @param mixed  ...$args Additional filter arguments.
+	 * @return mixed Filtered value.
+	 */
+	private function apply_legacy_filter( $old, $new, $value, ...$args ) {
+		$value = apply_filters( $new, $value, ...$args );
+		if ( has_filter( $old ) ) {
+			$value = apply_filters_deprecated(
+				$old,
+				array_merge( array( $value ), $args ),
+				'3.6.0',
+				$new
+			);
+		}
+		return $value;
 	}
 
 	/**
@@ -195,7 +224,7 @@ jQuery(document).ready(function($) {
 		 * plugins
 		 */
 		$data['Plugins'] = array();
-		if ( apply_filters( 'iworks_orphans_export_plugins', true ) ) {
+		if ( $this->apply_legacy_filter( 'iworks_orphans_export_plugins', 'iworks/orphans/export/plugins', true ) ) {
 			if ( ! function_exists( 'get_plugin_data' ) ) {
 				require_once ABSPATH . 'wp-admin/includes/plugin.php';
 			}
@@ -218,7 +247,7 @@ jQuery(document).ready(function($) {
 		 * theme
 		 */
 		$data['Theme'] = array();
-		if ( apply_filters( 'iworks_orphans_export_theme', true ) ) {
+		if ( $this->apply_legacy_filter( 'iworks_orphans_export_theme', 'iworks/orphans/export/theme', true ) ) {
 			$theme  = wp_get_theme();
 			$fields = array(
 				'Name',
