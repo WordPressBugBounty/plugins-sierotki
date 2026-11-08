@@ -4,7 +4,7 @@ Donate link: https://ko-fi.com/iworks?utm_source=sierotki&utm_medium=readme-dona
 Tags: czech, grammar, orphan, polish, typography
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 3.4.5
+Stable tag: 3.4.6
 Requires PHP: 8.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -96,6 +96,9 @@ You can do it on [Support Threads](https://wordpress.org/support/plugin/sierotki
 1. Miscellaneous options.
 
 == Changelog ==
+
+= 3.4.6 - 2026-11-07 =
+* Fixed Stored Cross-Site Scripting (XSS) via the comment parameter - the protected-tags placeholder digest was predictable, which allowed an unauthenticated attacker to restore raw markup inside an HTML attribute. The digest is now salted with a site-specific key. (CVE-2026-124216). Props for [Santh](https://www.wordfence.com/threat-intel/vulnerabilities/researchers/santh-2).
 
 = 3.4.5 - 2026-11-03 =
 * Build system converted from Grunt to the Bun bundler (`bun run build`).
