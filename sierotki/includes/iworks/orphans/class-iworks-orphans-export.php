@@ -108,7 +108,7 @@ jQuery(document).ready(function($) {
 				'date'   => gmdate( 'c' ),
 				'plugin' => array(
 					'name'    => 'Orphans',
-					'version' => '3.4.6',
+					'version' => '3.5.0',
 				),
 				'url'    => array(
 					'GitHub'    => 'https://github.com/iworks/sierotki',

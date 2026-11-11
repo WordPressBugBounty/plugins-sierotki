@@ -3,7 +3,7 @@
 Class Name: iWorks Rate
 Class URI: https://github.com/iworks/iworks-rate
 Description: Dashboard Notification module.
-Version: 3.4.6
+Version: 3.5.0
 Author: Marcin Pietrzak
 Author URI: http://iworks.pl/
 License: GPLv3 or later
