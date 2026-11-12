@@ -185,7 +185,7 @@ class iworks_options_logger {
                         $data,
                         array(
                             'plugin_name' => 'sierotki',
-                            'plugin_version' => '3.5.0',
+                            'plugin_version' => '3.5.1',
                             'plugin_url' => 'https://github.com/iworks/sierotki',
                             'plugin_author' => sprintf( '<a href="%s">%s</a>', esc_url( 'http://iworks.pl/' ), esc_html( 'Marcin Pietrzak' ) ),
                         )

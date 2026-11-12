@@ -55,7 +55,7 @@ class iworks_orphan {
 	 *
 	 * @since 3.0.0
 	 */
-	private $version = '3.5.0';
+	private $version = '3.5.1';
 
 	/**
 	 * tags to avoid replacement
@@ -448,6 +448,22 @@ class iworks_orphan {
 	 */
 	private function unconditional_replacement( $content ) {
 		if ( ! is_string( $content ) || empty( $content ) ) {
+			return $content;
+		}
+		/**
+		 * Skip content with unprocessed shortcodes (e.g. Divi parent
+		 * modules passing raw child shortcodes via `et_pb_module_content`).
+		 *
+		 * The HTML API would treat markup typed inside shortcode
+		 * attributes as real tags, and re-encoding the surrounding text
+		 * turns raw quotes into `&quot;` entities, which breaks the
+		 * shortcode parser downstream (attributes cut at the first word,
+		 * URLs wrapped in quotes). Child modules get replaced when their
+		 * own (already rendered) content passes through later filters.
+		 *
+		 * @since 3.5.1
+		 */
+		if ( preg_match( '/\[\w+[ \/]/', $content ) ) {
 			return $content;
 		}
 		/**
